@@ -1,0 +1,23 @@
+#!/usr/bin/ansible-playbook
+
+- name: Test
+  hosts: localhost
+  gather_facts: no
+  become: no
+
+  vars:
+    my_delegation_host: delegation_target.{{ dns_domain }}
+
+  tasks:
+
+    - debug:
+        var: ansible_host
+    - debug:
+        var: ansible_connection
+
+    - shell: hostname
+      register: hostname_data
+      delegate_to: "{{ my_delegation_host }}"
+
+    - debug:
+        var: hostname_data

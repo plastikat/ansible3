@@ -1,0 +1,22 @@
+{
+    "_meta": {
+        "hostvars": {
+            "delegation_target": {
+                "ansible_host": "{{ inventory_hostname }}.{{ dns_domain }}", 
+                "dns_domain": "{{ my_env }}.example.org", 
+                "my_env": "an7"
+            }
+        }
+    }, 
+    "all": {
+        "children": [
+            "delegation_target", 
+            "ungrouped"
+        ]
+    }, 
+    "delegation_target": {
+        "hosts": [
+            "delegation_target"
+        ]
+    }
+}

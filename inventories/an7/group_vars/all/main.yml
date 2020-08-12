@@ -1,0 +1,4 @@
+---
+my_env: an7
+dns_domain: "{{ my_env }}.example.org"
+ansible_host: "{{ inventory_hostname }}.{{ dns_domain }}"
