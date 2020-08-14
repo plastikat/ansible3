@@ -6,7 +6,7 @@
   become: no
 
   vars:
-    my_delegation_host: delegation_target.{{ dns_domain }}
+    my_delegation_host: delegation_target
 
   tasks:
 
@@ -18,6 +18,8 @@
     - shell: hostname
       register: hostname_data
       delegate_to: "{{ my_delegation_host }}"
+      vars:
+        ansible_hostname: "{{ my_delegation_host }}"
 
     - debug:
         var: hostname_data
