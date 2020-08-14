@@ -2,7 +2,8 @@
     "_meta": {
         "hostvars": {
             "delegation_target": {
-                "ansible_host": "{{ inventory_hostname }}.{{ dns_domain }}", 
+                "ansible_host": "{{ ansible_hostname }}.{{ dns_domain }}", 
+                "ansible_hostname": "{{ inventory_hostname }}", 
                 "dns_domain": "{{ my_env }}.example.org", 
                 "my_env": "an7"
             }
